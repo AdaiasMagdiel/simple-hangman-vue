@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forca</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <main id="app">
+        <section class="game">
+            <div class="game__word">
+                <p class="title">Palavra:</p>
+                <p class="word__word">{{ wordSecret }}</p>
+            </div>
+
+            
+
+            <div class="game__keyboard">
+                <p class="keyboard__key" @click="keyPressed('A', $event)">A</p>
+                <p class="keyboard__key" @click="keyPressed('B', $event)">B</p>
+                <p class="keyboard__key" @click="keyPressed('C', $event)">C</p>
+                <p class="keyboard__key" @click="keyPressed('D', $event)">D</p>
+                <p class="keyboard__key" @click="keyPressed('E', $event)">E</p>
+                <p class="keyboard__key" @click="keyPressed('F', $event)">F</p>
+                <p class="keyboard__key" @click="keyPressed('G', $event)">G</p>
+                <p class="keyboard__key" @click="keyPressed('H', $event)">H</p>
+                <p class="keyboard__key" @click="keyPressed('I', $event)">I</p>
+                <p class="keyboard__key" @click="keyPressed('J', $event)">J</p>
+                <p class="keyboard__key" @click="keyPressed('K', $event)">K</p>
+                <p class="keyboard__key" @click="keyPressed('L', $event)">L</p>
+                <p class="keyboard__key" @click="keyPressed('M', $event)">M</p>
+                <p class="keyboard__key" @click="keyPressed('N', $event)">N</p>
+                <p class="keyboard__key" @click="keyPressed('O', $event)">O</p>
+                <p class="keyboard__key" @click="keyPressed('P', $event)">P</p>
+                <p class="keyboard__key" @click="keyPressed('Q', $event)">Q</p>
+                <p class="keyboard__key" @click="keyPressed('R', $event)">R</p>
+                <p class="keyboard__key" @click="keyPressed('S', $event)">S</p>
+                <p class="keyboard__key" @click="keyPressed('T', $event)">T</p>
+                <p class="keyboard__key" @click="keyPressed('U', $event)">U</p>
+                <p class="keyboard__key" @click="keyPressed('V', $event)">V</p>
+                <p class="keyboard__key" @click="keyPressed('W', $event)">W</p>
+                <p class="keyboard__key" @click="keyPressed('X', $event)">X</p>
+                <p class="keyboard__key" @click="keyPressed('Y', $event)">Y</p>
+                <p class="keyboard__key" @click="keyPressed('Z', $event)">Z</p>
+            </div>
+
+            <div class="game__letters-played">
+                <p class="title">Letras jogadas:</p>
+                <p>{{ lettersPlayed }}</p>
+            </div>
+
+            <div class="game__definition"></div>
+
+            <div class="game__meanings">
+                <p class="title">Significados:</p>
+                <ul>
+                    <li>Categoria: {{ category }}</li>
+                    <li v-for="meaning in meanings">{{meaning}}</li>
+                </ul>
+            </div>
+
+            <button id="restart" @click="restart($event)">Novo Jogo</button>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./assets/js/index.js"></script>
+</body>
+</html>
