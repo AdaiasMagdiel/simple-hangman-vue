@@ -68,6 +68,7 @@ Vue.createApp({
       this.ready = true;
     },
     async restart(evt) {
+      this.ready = false;
       this.word = "";
       this.wordSecret = "";
       this.category = "";
