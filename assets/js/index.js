@@ -1,6 +1,7 @@
 Vue.createApp({
   data() {
     return {
+      ready: false,
       word: "",
       wordSecret: "",
       category: "",
@@ -63,6 +64,8 @@ Vue.createApp({
       parsed = this.parseMeaning(meaning[0]);
       this.meanings = parsed[0];
       this.category = parsed[1];
+
+      this.ready = true;
     },
     async restart(evt) {
       this.word = "";
