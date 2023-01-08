@@ -12,7 +12,7 @@
         <section class="game">
             <div class="game__word">
                 <p class="title">Palavra:</p>
-                <p class="word__word" v-if="ready">{{ wordSecret }}</p>
+                <p class="word__word">{{ wordSecret }}</p>
             </div>
 
             
@@ -48,14 +48,14 @@
 
             <div class="game__letters-played">
                 <p class="title">Letras jogadas:</p>
-                <p v-if="ready">{{ lettersPlayed }}</p>
+                <p>{{ lettersPlayed }}</p>
             </div>
 
             <div class="game__definition"></div>
 
             <div class="game__meanings">
                 <p class="title">Significados:</p>
-                <ul v-if="ready">
+                <ul>
                     <li>Categoria: {{ category }}</li>
                     <li v-for="meaning in meanings">{{meaning}}</li>
                 </ul>

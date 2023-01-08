@@ -1,7 +1,6 @@
 Vue.createApp({
   data() {
     return {
-      ready: false,
       word: "",
       wordSecret: "",
       category: "",
@@ -45,7 +44,11 @@ Vue.createApp({
         .split("\n")
         .filter((item) => item.length > 0);
 
-      const category = xmlDoc.getElementsByTagName("gramGrp")[0].textContent;
+      let category = "Não definido";
+      const xml_cat = xmlDoc.getElementsByTagName("gramGrp");
+      if (xml_cat && xml_cat[0]) {
+        category = xml_cat[0].textContent;
+      }
       console.log(category);
 
       return [defs, category];
@@ -55,6 +58,7 @@ Vue.createApp({
 
       const word = await (await fetch(`${API_URL}/random`)).json();
       this.word = word["word"];
+
       this.wordSecret = this.word.replace(/./gim, "_");
 
       const meaning = await (
@@ -64,23 +68,21 @@ Vue.createApp({
       parsed = this.parseMeaning(meaning[0]);
       this.meanings = parsed[0];
       this.category = parsed[1];
-
-      this.ready = true;
     },
     async restart(evt) {
-      this.ready = false;
       this.word = "";
       this.wordSecret = "";
       this.category = "";
       this.meanings = [];
       this.letters = [];
 
-      await this.getWordAndMeaning();
       Array.from(
         evt.target.parentElement.querySelectorAll(".keyboard__key")
       ).map((item) => {
         item.classList.remove("clicked");
       });
+
+      await this.getWordAndMeaning();
     },
   },
   async mounted() {
